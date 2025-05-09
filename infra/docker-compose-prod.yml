@@ -1,0 +1,30 @@
+services:
+  app:
+    container_name: sahabatbk
+    image: adrfstwn/sahabatbk.com:latest
+    pull_policy: always
+    ports:
+      - "8050:8000"
+    env_file:
+      - /home/wawan/sahabatbk/.env.prod
+    volumes:
+      - ../:/storage
+    networks:
+      - nginx-network
+      - mysql-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/up"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 5s
+
+networks:
+  nginx-network:
+    name: nginx-network
+    external: true
+    
+  mysql-network:
+    name: mysql-network
+    external: true
