@@ -22,7 +22,7 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build and Push Laravel Docker Image
+      - name: Build and Push Prod Docker Image
         uses: docker/build-push-action@v5
         with:
           context: .
@@ -34,15 +34,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy via SSH
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          path: /home/wawan/sahabatbk/tmp
+
+      - name: Deploy to Prod Server
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
-            cd /home/wawan/sahabatbk
-            docker pull ${{ secrets.DOCKER_USERNAME }}/sahabatbk.com:latest
+            cd /home/wawan/sahabatbk/tmp
+
             docker compose -f infra/docker-compose-prod.yml down
+            docker rmi -f adrfstwn/sahabatbk.com:latest
             docker compose -f infra/docker-compose-prod.yml up -d
+
             sudo cp infra/nginx.conf /etc/nginx/conf.d/sahabatbk.conf
+
+            rm -rf /home/wawan/sahabatbk/tmp

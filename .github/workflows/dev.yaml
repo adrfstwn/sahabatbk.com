@@ -43,7 +43,11 @@ jobs:
           port: 22
           script: |
             cd /home/wawan/sahabatbk
-            docker pull ${{ secrets.DOCKER_USERNAME }}/sahabatbk.com:dev
+
             docker compose -f infra/docker-compose-dev.yml down
+            docker rmi -f adrfstwn/sahabatbk.com:dev
             docker compose -f infra/docker-compose-dev.yml up -d
+
             sudo cp infra/nginx.conf /etc/nginx/conf.d/sahabatbk.conf
+
+            rm -rf /home/wawan/sahabatbk/tmp
