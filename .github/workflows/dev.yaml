@@ -57,6 +57,6 @@ jobs:
             docker rmi -f adrfstwn/sahabatbk.com:dev
             docker compose -f infra/docker-compose-dev.yml up -d
 
-            sudo cp infra/nginx.conf /etc/nginx/conf.d/sahabatbk.conf
+            sudo cp infra/nginx.conf /etc/nginx/conf/sahabatbk.conf
 
             rm -rf /home/wawan/sahabatbk/tmp/*
