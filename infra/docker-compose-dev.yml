@@ -3,8 +3,6 @@ services:
     container_name: sahabatbk-dev
     image: adrfstwn/sahabatbk.com:dev
     pull_policy: always
-    ports:
-      - "8060:8000"
     env_file:
       - /home/wawan/sahabatbk/.env.dev
     volumes:
