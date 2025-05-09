@@ -1,12 +1,12 @@
 services:
-  app:
+  app-prod:
     container_name: sahabatbk
     image: adrfstwn/sahabatbk.com:latest
     pull_policy: always
     env_file:
       - /home/wawan/sahabatbk/.env.prod
     volumes:
-      - ../:/storage
+      - /srv/sahabatbk/prod-storage:/storage
     networks:
       - nginx-network
       - mysql-network

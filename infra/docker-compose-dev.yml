@@ -1,5 +1,5 @@
 services:
-  app:
+  app-dev:
     container_name: sahabatbk-dev
     image: adrfstwn/sahabatbk.com:dev
     pull_policy: always
