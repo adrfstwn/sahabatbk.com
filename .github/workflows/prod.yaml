@@ -34,10 +34,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - name: Copy files to VPS
+        uses: appleboy/scp-action@v0.1.4
         with:
-          path: /home/wawan/sahabatbk/tmp
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          source: "."
+          target: "/home/wawan/sahabatbk/tmp"
 
       - name: Deploy to Prod Server
         uses: appleboy/ssh-action@v1.0.0
