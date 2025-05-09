@@ -1,6 +1,6 @@
 services:
   app-dev:
-    container_name: sahabatbk
+    container_name: sahabatbk-dev
     image: adrfstwn/sahabatbk.com:dev
     pull_policy: always
     env_file:
