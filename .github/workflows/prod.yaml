@@ -34,8 +34,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v4
       - name: Copy files to VPS
-        uses: appleboy/scp-action@v0.1.4
+        uses: appleboy/scp-action@v1
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
@@ -58,4 +59,4 @@ jobs:
 
             sudo cp infra/nginx.conf /etc/nginx/conf.d/sahabatbk.conf
 
-            rm -rf /home/wawan/sahabatbk/tmp
+            rm -rf /home/wawan/sahabatbk/tmp/*
