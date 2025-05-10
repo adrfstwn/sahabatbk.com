@@ -24,10 +24,10 @@ class AuthController extends Controller
         }
 
         $user = Auth::user();
-
-        return response()->json([
+        
+        return redirect()->route('admin.dashboard', compact('users'))
+        ->with([
             'message' => 'Login successful',
-            'user' => $user,
         ]);
     }
 
