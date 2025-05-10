@@ -10,19 +10,7 @@ COPY . .
 # Install dependencies
 RUN composer install --ignore-platform-reqs --no-dev -a
 
-# Stage 2: Node build frontend
-FROM node:20-alpine as node
-
-# Workdir aplikasi
-WORKDIR /app
-
-# Copy all
-COPY . .
-
-# Install dependencies
-RUN npm install && npm run build
-
-## Stage 3: Main PHP Image FrankenPHP
+## Stage 2: Main PHP Image FrankenPHP
 FROM dunglas/frankenphp:latest
 
 # Install dependencies 
@@ -36,9 +24,6 @@ WORKDIR /app
 
 # Copy from Composer stage 1
 COPY --from=composer /app /app
-
-# Copy from Node stage 2
-COPY --from=node /app/public/build /app/public/build
 
 # Install Octane FrankenPHP
 RUN echo "yes" | php artisan octane:install --server=frankenphp --no-interaction
