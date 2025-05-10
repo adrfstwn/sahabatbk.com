@@ -96,7 +96,7 @@
                                             class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gray-400">
                                             <i class="ri-mail-line"></i>
                                         </div>
-                                        <input type="email" id="email" name="email" value="{{ old('email') }}"
+                                        <input type="email" id="email" name="email"
                                             class="form-input w-full pl-10 pr-4 py-3 border border-gray-300 rounded text-gray-700 text-sm"
                                             placeholder="Enter your email address" required>
                                     </div>
@@ -114,7 +114,6 @@
                                             <i class="ri-lock-line"></i>
                                         </div>
                                         <input type="password" id="password" name="password"
-                                            value="{{ old('password') }}"
                                             class="form-input w-full pl-10 pr-12 py-3 border border-gray-300 rounded text-gray-700 text-sm"
                                             placeholder="Create a password" required>
                                         <div class="absolute inset-y-0 right-0 flex items-center pr-3 password-toggle">
@@ -154,7 +153,6 @@
                     passwordToggle.classList.add('ri-eye-off-line');
                 }
             });
-        });
         });
     </script>
 </body>
