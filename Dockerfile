@@ -22,7 +22,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Workdir aplikasi
 WORKDIR /app
 
-# Copy 
+# Copy from Composer stage 1
 COPY --from=composer /app /app
 
 # Install Octane FrankenPHP
