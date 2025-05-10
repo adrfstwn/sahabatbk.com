@@ -136,12 +136,14 @@
             <a href="#" class="text-white text-2xl font-['Pacifico']">logo</a>
             <nav class="hidden md:flex items-center space-x-8">
                 <a href="#" class="nav-link text-white font-medium hover:text-accent transition-colors">HOME</a>
-                <a href="#"
-                    class="nav-link text-white font-medium hover:text-accent transition-colors">INFORMATION</a>
+                <a href="#" class="nav-link text-white font-medium hover:text-accent transition-colors">INFORMATION</a>
                 <a href="#" class="nav-link text-white font-medium hover:text-accent transition-colors">LKPD</a>
-                <button
-                    class="ml-4 bg-accent text-primary font-semibold px-6 py-2 !rounded-button hover:bg-opacity-90 transition-all shadow-md whitespace-nowrap">Sign
-                    In</button>
+                <a href="{{ route('login') }}">
+                    <button
+                        class="ml-4 bg-accent text-primary font-semibold px-6 py-2 !rounded-button hover:bg-opacity-90 transition-all shadow-md whitespace-nowrap">
+                        Sign In
+                    </button>
+                </a>
             </nav>
             <div class="md:hidden w-8 h-8 flex items-center justify-center text-white cursor-pointer">
                 <i class="ri-menu-line ri-lg"></i>
@@ -317,8 +319,8 @@
                             models and quizzes.</p>
                         <div class="flex justify-between items-center">
                             <span class="text-sm text-gray-500">May 8, 2025</span>
-                            <a href="#"
-                                class="text-primary font-medium hover:text-secondary transition-colors">Read more</a>
+                            <a href="#" class="text-primary font-medium hover:text-secondary transition-colors">Read
+                                more</a>
                         </div>
                     </div>
                 </div>
@@ -336,8 +338,8 @@
                             prizes for winners.</p>
                         <div class="flex justify-between items-center">
                             <span class="text-sm text-gray-500">May 5, 2025</span>
-                            <a href="#"
-                                class="text-primary font-medium hover:text-secondary transition-colors">Read more</a>
+                            <a href="#" class="text-primary font-medium hover:text-secondary transition-colors">Read
+                                more</a>
                         </div>
                     </div>
                 </div>
@@ -355,8 +357,8 @@
                             communication skills.</p>
                         <div class="flex justify-between items-center">
                             <span class="text-sm text-gray-500">May 2, 2025</span>
-                            <a href="#"
-                                class="text-primary font-medium hover:text-secondary transition-colors">Read more</a>
+                            <a href="#" class="text-primary font-medium hover:text-secondary transition-colors">Read
+                                more</a>
                         </div>
                     </div>
                 </div>
@@ -502,8 +504,7 @@
                 <div>
                     <h3 class="text-lg font-semibold mb-6">Resources</h3>
                     <ul class="space-y-3">
-                        <li><a href="#"
-                                class="text-white text-opacity-80 hover:text-opacity-100 transition-colors">Help
+                        <li><a href="#" class="text-white text-opacity-80 hover:text-opacity-100 transition-colors">Help
                                 Center</a></li>
                         <li><a href="#"
                                 class="text-white text-opacity-80 hover:text-opacity-100 transition-colors">Study
@@ -563,11 +564,11 @@
         </div>
     </footer>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Mobile menu toggle
             const menuButton = document.querySelector('.ri-menu-line');
             if (menuButton) {
-                menuButton.addEventListener('click', function() {
+                menuButton.addEventListener('click', function () {
                     // Mobile menu functionality would go here
                     alert('Mobile menu clicked');
                 });
@@ -575,7 +576,7 @@
             // Quick access buttons
             const quickAccessButtons = document.querySelectorAll('.quick-access-btn');
             quickAccessButtons.forEach(button => {
-                button.addEventListener('click', function() {
+                button.addEventListener('click', function () {
                     const subject = this.querySelector('h3').textContent;
                     alert(`You selected: ${subject}`);
                 });
