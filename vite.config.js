@@ -8,8 +8,8 @@ export default defineConfig({
             refresh: true,
         }),
     ],
-    server: {
-        https: true,
-    },
-    base: process.env.VITE_ASSET_URL || "",
+    // server: {
+    //     https: true,
+    // },
+    base: process.env.VITE_ASSET_URL || "",
 });

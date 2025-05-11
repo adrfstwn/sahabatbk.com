@@ -379,8 +379,9 @@
 
 <section class="container mx-auto px-4 py-8 pt-40">
     <div class="mb-8 text-center relative">
-        <img src="https://readdy.ai/api/search-image?query=cute%20cartoon%20pencil%20character%20with%20happy%20face%2C%20school%20supplies%20floating%20around%2C%20colorful%20educational%20theme%2C%20vibrant%20colors%2C%20playful%20design%2C%20suitable%20for%20children%2C%20digital%20art%20style%2C%20clean%20background&width=150&height=150&seq=1&orientation=squarish"
-            alt="Karakter Pensil" class="w-20 h-20 mx-auto mb-4 floating">
+        <img src="{{ asset('images/kids1.png') }}" alt="Karakter Pensil"
+            class="w-20 h-20 md:w-16 md:h-16 lg:w-40 lg:h-40 mx-auto mb-4 floating">
+
 
         <h2 class="text-3xl font-bold text-primary mb-2">Lembar Kerja Peserta Didik</h2>
         <p class="text-gray-600 max-w-2xl mx-auto">Selamat datang di LKPD interaktif! Silakan isi form-form berikut
