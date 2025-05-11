@@ -1,7 +1,7 @@
 <!-- Header Navigation -->
 <header class="fixed top-0 left-0 w-full bg-primary shadow-md z-50">
     <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-        <a href="#" class="text-white text-2xl font-['Pacifico']">logo</a>
+        <a href="#" class="text-white text-2xl font-['Pacifico']">SahabatBK.com</a>
         <nav class="hidden md:flex items-center space-x-8">
             <a href="#" class="nav-link text-white font-medium hover:text-accent transition-colors">HOME</a>
             <a href="#" class="nav-link text-white font-medium hover:text-accent transition-colors">KONSELING

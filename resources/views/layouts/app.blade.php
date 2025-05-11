@@ -101,7 +101,9 @@
             transform: rotate(45deg);
         }
     </style>
+
     @yield('styles')
+    @stack('styles')
 </head>
 
 <body>

@@ -3,7 +3,7 @@
     <div class="container mx-auto px-6">
         <div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-12">
             <div class="md:col-span-3">
-                <h3 class="text-xl font-['Pacifico'] mb-6">logo</h3>
+                <h3 class="text-xl font-['Pacifico'] mb-6">SahabatBK.com</h3>
                 <p class="text-white text-opacity-80 mb-6">Bersama SahabatBK.com wujudkan anak ceria, semangat, kreatif,
                     dan indusif</p>
                 <div class="flex space-x-4">
