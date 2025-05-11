@@ -4,8 +4,8 @@
         <a href="#" class="text-white text-2xl font-['Pacifico']">SahabatBK.com</a>
         <nav class="hidden md:flex items-center space-x-8">
             <a href="#" class="nav-link text-white font-medium hover:text-accent transition-colors">HOME</a>
-            <a href="#" class="nav-link text-white font-medium hover:text-accent transition-colors">KONSELING
-                NARATIF</a>
+            <a href="#konseling-naratif"
+                class="nav-link text-white font-medium hover:text-accent transition-colors">KONSELING NARATIF</a>
             <a href="#" class="nav-link text-white font-medium hover:text-accent transition-colors">KEBIJAKAN &
                 PRIVASI</a>
             <a href="#" class="nav-link text-white font-medium hover:text-accent transition-colors">LKPD</a>
@@ -21,3 +21,31 @@
         </div>
     </div>
 </header>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get all links with hash
+        const links = document.querySelectorAll('a[href^="#"]');
+
+        // Add click event to each link
+        links.forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Prevent default anchor behavior
+                e.preventDefault();
+
+                // Get the target element
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    // Smooth scroll to the element
+                    window.scrollTo({
+                        top: targetElement.offsetTop -
+                        100, // Offset by 100px to account for fixed headers
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    });
+</script>
