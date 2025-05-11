@@ -8,7 +8,7 @@
                 class="nav-link text-white font-medium hover:text-accent transition-colors">KONSELING NARATIF</a>
             <a href="#" class="nav-link text-white font-medium hover:text-accent transition-colors">KEBIJAKAN &
                 PRIVASI</a>
-            <a href="#" class="nav-link text-white font-medium hover:text-accent transition-colors">LKPD</a>
+            <a href="{{ route('lkpd') }}" class="nav-link text-white font-medium hover:text-accent transition-colors">LKPD</a>
             <a href="{{ route('login') }}">
                 <button
                     class="ml-4 bg-accent text-primary font-semibold px-6 py-2 !rounded-button hover:bg-opacity-90 transition-all shadow-md whitespace-nowrap">
