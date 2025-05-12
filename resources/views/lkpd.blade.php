@@ -380,7 +380,7 @@
                 </span>
             </h2>
             <p class="text-gray-700 text-lg md:text-xl max-w-2xl">
-                Selamat datang di LKPD interaktif! Silakan isi form-form berikut dengan teliti dan sesuai petunjuk.
+                Silakan isi form-form berikut dengan teliti dan sesuai petunjuk.
                 Selamat belajar!
             </p>
         </div>
