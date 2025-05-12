@@ -1,5 +1,5 @@
 @extends('layouts.admin.app')
-@section('title', 'Admin - SahabatBK.com')
+@section('title', 'SahabatBK.com - Admin')
 @section('content')
 
 <section class="flex-1 p-6">

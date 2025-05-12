@@ -1,392 +1,391 @@
 @extends('layouts.app')
-@section('title', 'LKPD - SahabatBK.com')
+@section('title', 'SahabatBK.com - LKPD')
 @section('content')
+<style>
+    body {
+        background-color: #f3f9ff !important;
+    }
 
-@push('styles')
-    <style>
-        :where([class^="ri-"])::before {
-            content: "\f3c2";
+    .card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+        transform: scale(1.02);
+        box-shadow: 0 10px 25px rgba(3, 174, 210, 0.15);
+    }
+
+    .floating {
+        animation: float 6s ease-in-out infinite;
+    }
+
+    .floating-delayed {
+        animation: float 6s ease-in-out 2s infinite;
+    }
+
+    .floating-more-delayed {
+        animation: float 6s ease-in-out 4s infinite;
+    }
+
+    @keyframes float {
+        0% {
+            transform: translateY(0px) rotate(0deg);
         }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #FEEFAD;
+        50% {
+            transform: translateY(-15px) rotate(5deg);
         }
 
-        .card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        100% {
+            transform: translateY(0px) rotate(0deg);
+        }
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="email"],
+    input[type="date"],
+    textarea,
+    select {
+        transition: all 0.3s ease;
+        border: 2px solid #e2e8f0;
+        font-size: 0.875rem;
+        padding: 6px 12px;
+    }
+
+    input[type="text"]:focus,
+    input[type="number"]:focus,
+    input[type="email"]:focus,
+    input[type="date"]:focus,
+    textarea:focus,
+    select:focus {
+        border-color: #68D2E8;
+        box-shadow: 0 0 0 3px rgba(104, 210, 232, 0.25);
+        outline: none;
+    }
+
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    .custom-checkbox {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .custom-checkbox input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    .checkmark {
+        height: 20px;
+        width: 20px;
+        background-color: white;
+        border: 2px solid #68D2E8;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+    }
+
+    .custom-checkbox input:checked~.checkmark {
+        background-color: #03AED2;
+        border-color: #03AED2;
+    }
+
+    .checkmark:after {
+        content: "";
+        display: none;
+        width: 6px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+    }
+
+    .custom-checkbox input:checked~.checkmark:after {
+        display: block;
+    }
+
+    .custom-radio {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .custom-radio input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    .radio-mark {
+        height: 20px;
+        width: 20px;
+        background-color: white;
+        border: 2px solid #68D2E8;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+    }
+
+    .custom-radio input:checked~.radio-mark {
+        border-color: #03AED2;
+    }
+
+    .radio-mark:after {
+        content: "";
+        display: none;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #03AED2;
+    }
+
+    .custom-radio input:checked~.radio-mark:after {
+        display: block;
+    }
+
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 40px;
+        height: 22px;
+    }
+
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #e2e8f0;
+        transition: .4s;
+        border-radius: 34px;
+    }
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 16px;
+        width: 16px;
+        left: 3px;
+        bottom: 3px;
+        background-color: white;
+        transition: .4s;
+        border-radius: 50%;
+    }
+
+    input:checked+.slider {
+        background-color: #03AED2;
+    }
+
+    input:checked+.slider:before {
+        transform: translateX(18px);
+    }
+
+    .custom-range {
+        -webkit-appearance: none;
+        width: 100%;
+        height: 6px;
+        border-radius: 5px;
+        background: #e2e8f0;
+        outline: none;
+    }
+
+    .custom-range::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: #03AED2;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .custom-range::-webkit-slider-thumb:hover {
+        background: #68D2E8;
+        transform: scale(1.1);
+    }
+
+    .custom-range::-moz-range-thumb {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: #03AED2;
+        cursor: pointer;
+        border: none;
+        transition: all 0.2s ease;
+    }
+
+    .custom-range::-moz-range-thumb:hover {
+        background: #68D2E8;
+        transform: scale(1.1);
+    }
+
+    .custom-select {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+    }
+
+    .custom-select select {
+        display: none;
+    }
+
+    .select-selected {
+        background-color: white;
+        border: 2px solid #e2e8f0;
+        border-radius: 6px;
+        padding: 8px 12px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .select-selected:after {
+        content: "";
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 5px solid #03AED2;
+        transition: all 0.3s;
+    }
+
+    .select-selected.select-arrow-active:after {
+        transform: rotate(180deg);
+    }
+
+    .select-items {
+        position: absolute;
+        background-color: white;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 99;
+        border: 2px solid #68D2E8;
+        border-top: none;
+        border-radius: 0 0 6px 6px;
+        max-height: 180px;
+        overflow-y: auto;
+        display: none;
+    }
+
+    .select-items div {
+        color: #333;
+        padding: 8px 12px;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-size: 0.875rem;
+    }
+
+    .select-items div:hover {
+        background-color: rgba(104, 210, 232, 0.1);
+    }
+
+    .select-hide {
+        display: none;
+    }
+
+    .same-as-selected {
+        background-color: rgba(104, 210, 232, 0.2);
+    }
+
+    /* Pengurangan ukuran untuk layar desktop */
+    @media (min-width: 1024px) {
+        .container {
+            max-width: 1200px;
         }
 
-        .card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 10px 25px rgba(3, 174, 210, 0.15);
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
         }
 
-        .floating {
-            animation: float 6s ease-in-out infinite;
+        .card-sm {
+            grid-column: span 1;
         }
 
-        .floating-delayed {
-            animation: float 6s ease-in-out 2s infinite;
+        .card-md {
+            grid-column: span 2;
         }
 
-        .floating-more-delayed {
-            animation: float 6s ease-in-out 4s infinite;
+        .card-lg {
+            grid-column: span 4;
         }
 
-        @keyframes float {
-            0% {
-                transform: translateY(0px) rotate(0deg);
-            }
-
-            50% {
-                transform: translateY(-15px) rotate(5deg);
-            }
-
-            100% {
-                transform: translateY(0px) rotate(0deg);
-            }
+        .card-content {
+            padding: 1rem;
         }
 
-        input[type="text"],
-        input[type="number"],
-        input[type="email"],
-        input[type="date"],
-        textarea,
-        select {
-            transition: all 0.3s ease;
-            border: 2px solid #e2e8f0;
+        .card-header {
+            padding: 0.75rem 1rem;
+        }
+
+        .card-header h3 {
+            font-size: 1.1rem;
+        }
+
+        /* Ukuran font dan spacing yang lebih kecil */
+        .card label,
+        .card p {
             font-size: 0.875rem;
-            padding: 6px 12px;
         }
 
-        input[type="text"]:focus,
-        input[type="number"]:focus,
-        input[type="email"]:focus,
-        input[type="date"]:focus,
-        textarea:focus,
-        select:focus {
-            border-color: #68D2E8;
-            box-shadow: 0 0 0 3px rgba(104, 210, 232, 0.25);
-            outline: none;
+        .card .mb-4 {
+            margin-bottom: 0.75rem;
         }
 
-        input[type="number"]::-webkit-inner-spin-button,
-        input[type="number"]::-webkit-outer-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
+        .card .mb-5 {
+            margin-bottom: 1rem;
         }
 
-        .custom-checkbox {
-            display: flex;
-            align-items: center;
-            cursor: pointer;
+        .card .space-y-2 {
+            margin-top: 0.5rem;
         }
 
-        .custom-checkbox input {
-            position: absolute;
-            opacity: 0;
-            cursor: pointer;
+        textarea {
+            min-height: 60px;
         }
+    }
+</style>
 
-        .checkmark {
-            height: 20px;
-            width: 20px;
-            background-color: white;
-            border: 2px solid #68D2E8;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s ease;
-        }
+<section class="container mx-auto px-4 py-6 pt-40 pb-20">
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="flex flex-col items-center text-center">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-primary mb-4">
+                <span class="flex justify-center items-center gap-2">
+                    <i class="ri-quill-pen-line text-yellow-400 text-3xl md:text-5xl"></i>
+                    Lembar Kerja Peserta Didik
+                    <i class="ri-quill-pen-fill text-yellow-400 text-3xl md:text-5xl"></i>
+                </span>
+            </h2>
+            <p class="text-gray-700 text-lg md:text-xl max-w-2xl">
+                Silakan isi form-form berikut dengan teliti dan sesuai petunjuk.
+                Selamat belajar!
+            </p>
+        </div>
 
-        .custom-checkbox input:checked~.checkmark {
-            background-color: #03AED2;
-            border-color: #03AED2;
-        }
-
-        .checkmark:after {
-            content: "";
-            display: none;
-            width: 6px;
-            height: 10px;
-            border: solid white;
-            border-width: 0 2px 2px 0;
-            transform: rotate(45deg);
-        }
-
-        .custom-checkbox input:checked~.checkmark:after {
-            display: block;
-        }
-
-        .custom-radio {
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        .custom-radio input {
-            position: absolute;
-            opacity: 0;
-            cursor: pointer;
-        }
-
-        .radio-mark {
-            height: 20px;
-            width: 20px;
-            background-color: white;
-            border: 2px solid #68D2E8;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s ease;
-        }
-
-        .custom-radio input:checked~.radio-mark {
-            border-color: #03AED2;
-        }
-
-        .radio-mark:after {
-            content: "";
-            display: none;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #03AED2;
-        }
-
-        .custom-radio input:checked~.radio-mark:after {
-            display: block;
-        }
-
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 40px;
-            height: 22px;
-        }
-
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #e2e8f0;
-            transition: .4s;
-            border-radius: 34px;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 16px;
-            width: 16px;
-            left: 3px;
-            bottom: 3px;
-            background-color: white;
-            transition: .4s;
-            border-radius: 50%;
-        }
-
-        input:checked+.slider {
-            background-color: #03AED2;
-        }
-
-        input:checked+.slider:before {
-            transform: translateX(18px);
-        }
-
-        .custom-range {
-            -webkit-appearance: none;
-            width: 100%;
-            height: 6px;
-            border-radius: 5px;
-            background: #e2e8f0;
-            outline: none;
-        }
-
-        .custom-range::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            background: #03AED2;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .custom-range::-webkit-slider-thumb:hover {
-            background: #68D2E8;
-            transform: scale(1.1);
-        }
-
-        .custom-range::-moz-range-thumb {
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            background: #03AED2;
-            cursor: pointer;
-            border: none;
-            transition: all 0.2s ease;
-        }
-
-        .custom-range::-moz-range-thumb:hover {
-            background: #68D2E8;
-            transform: scale(1.1);
-        }
-
-        .custom-select {
-            position: relative;
-            display: inline-block;
-            width: 100%;
-        }
-
-        .custom-select select {
-            display: none;
-        }
-
-        .select-selected {
-            background-color: white;
-            border: 2px solid #e2e8f0;
-            border-radius: 6px;
-            padding: 8px 12px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .select-selected:after {
-            content: "";
-            width: 0;
-            height: 0;
-            border-left: 5px solid transparent;
-            border-right: 5px solid transparent;
-            border-top: 5px solid #03AED2;
-            transition: all 0.3s;
-        }
-
-        .select-selected.select-arrow-active:after {
-            transform: rotate(180deg);
-        }
-
-        .select-items {
-            position: absolute;
-            background-color: white;
-            top: 100%;
-            left: 0;
-            right: 0;
-            z-index: 99;
-            border: 2px solid #68D2E8;
-            border-top: none;
-            border-radius: 0 0 6px 6px;
-            max-height: 180px;
-            overflow-y: auto;
-            display: none;
-        }
-
-        .select-items div {
-            color: #333;
-            padding: 8px 12px;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 0.875rem;
-        }
-
-        .select-items div:hover {
-            background-color: rgba(104, 210, 232, 0.1);
-        }
-
-        .select-hide {
-            display: none;
-        }
-
-        .same-as-selected {
-            background-color: rgba(104, 210, 232, 0.2);
-        }
-
-        /* Pengurangan ukuran untuk layar desktop */
-        @media (min-width: 1024px) {
-            .container {
-                max-width: 1200px;
-            }
-
-            .card-container {
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                gap: 16px;
-            }
-
-            .card-sm {
-                grid-column: span 1;
-            }
-
-            .card-md {
-                grid-column: span 2;
-            }
-
-            .card-lg {
-                grid-column: span 4;
-            }
-
-            .card-content {
-                padding: 1rem;
-            }
-
-            .card-header {
-                padding: 0.75rem 1rem;
-            }
-
-            .card-header h3 {
-                font-size: 1.1rem;
-            }
-
-            /* Ukuran font dan spacing yang lebih kecil */
-            .card label,
-            .card p {
-                font-size: 0.875rem;
-            }
-
-            .card .mb-4 {
-                margin-bottom: 0.75rem;
-            }
-
-            .card .mb-5 {
-                margin-bottom: 1rem;
-            }
-
-            .card .space-y-2 {
-                margin-top: 0.5rem;
-            }
-
-            textarea {
-                min-height: 60px;
-            }
-        }
-    </style>
-@endpush
-
-<section class="container mx-auto px-4 py-8 pt-40">
-    <div class="mb-8 text-center relative">
-        <img src="{{ asset('images/kids1.png') }}" alt="Karakter Pensil"
-            class="w-20 h-20 md:w-16 md:h-16 lg:w-40 lg:h-40 mx-auto mb-4 floating">
-
-
-        <h2 class="text-3xl font-bold text-primary mb-2">Lembar Kerja Peserta Didik</h2>
-        <p class="text-gray-600 max-w-2xl mx-auto">Selamat datang di LKPD interaktif! Silakan isi form-form berikut
-            dengan teliti dan sesuai petunjuk. Selamat belajar!</p>
-
+        <!-- Floating Icons -->
         <div class="absolute -top-10 right-10 opacity-50 floating-delayed">
             <div class="w-12 h-12 flex items-center justify-center text-accent">
                 <i class="ri-book-open-line ri-2x"></i>
@@ -398,19 +397,21 @@
             </div>
         </div>
     </div>
+</section>
 
+<!-- LKPD Form Section -->
+<section class="container mx-auto px-6">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- Card 1: Data Diri -->
         <div class="card bg-white rounded-md shadow-lg overflow-hidden">
             <div class="bg-gradient-to-r from-primary to-secondary p-4">
                 <h3 class="text-xl font-semibold text-white flex items-center">
                     <div class="w-8 h-8 flex items-center justify-center mr-2">
-                        <i class="ri-user-3-line"></i>
                     </div>
                     Data Diri
                 </h3>
             </div>
-            <div class="p-6">
+            <div class="card-content p-4">
                 <form>
                     <div class="mb-4">
                         <label for="nama" class="block text-primary font-medium mb-2">Nama Lengkap</label>
@@ -718,7 +719,7 @@
         </div>
     </div>
 
-    <div class="mt-10 flex justify-center">
+    <div class="mt-10 flex justify-center p-12">
         <button
             class="bg-primary hover:bg-secondary text-white font-bold py-3 px-8 rounded-button shadow-lg transition-all duration-300 flex items-center whitespace-nowrap">
             <div class="w-6 h-6 flex items-center justify-center mr-2">

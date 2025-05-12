@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Learning Portal - Home')
+@section('title', 'SahabatBK.com - Home')
 @section('content')
 
 <style>
@@ -197,27 +197,26 @@
     <div class="container mx-auto px-6">
         <!-- Bagian Konseling Naratif yang dimodifikasi -->
         <div
-            class="bg-white rounded-xl shadow-xl overflow-hidden pt-4 pb-8 px-8 md:pt-6 md:pb-12 md:px-12 mb-24 custom-shadow3">
-            <div class="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
+            class="bg-white rounded-xl shadow-xl overflow-hidden pt-4 pb-8 px-6 md:pt-6 md:pb-12 md:px-12 mb-24 custom-shadow3">
+            <div class="grid md:grid-cols-12 gap-6 md:gap-12 items-center">
                 <!-- Konten Teks -->
-                <div class="md:col-span-7">
-                    <h2 class="text-5xl md:text-6xl font-extrabold text-primary mb-6 leading-tight">
-                        <span class="flex items-center gap-2">
-                            <i class="ri-double-quotes-l text-yellow-400 text-5xl md:text-6xl"></i>
+                <div class="md:col-span-7 text-center md:text-left">
+                    <h2 class="text-4xl md:text-6xl font-extrabold text-primary mb-6 leading-tight">
+                        <span class="flex justify-center md:justify-start items-center gap-2">
+                            <i class="ri-double-quotes-l text-yellow-400 text-4xl md:text-6xl"></i>
                             Konseling
                         </span>
-                        <span class="flex items-center gap-2">
+                        <span class="flex justify-center md:justify-start items-center gap-2">
                             Naratif
-                            <i class="ri-double-quotes-r text-yellow-400 text-5xl md:text-6xl"></i>
+                            <i class="ri-double-quotes-r text-yellow-400 text-4xl md:text-6xl"></i>
                         </span>
                     </h2>
-
-                    <p class="text-lg text-gray-700 mb-4" style="text-align: justify;">
+                    <p class="text-base md:text-lg text-gray-700 mb-4" style="text-align: justify;">
                         Konseling naratif adalah pendekatan dalam Bimbingan dan Konseling yang berfokus pada cerita
                         hidup konseli (siswa). Pendekatan ini membantu siswa memahami dan mengubah cara mereka memaknai
                         pengalaman hidupnya melalui kisah atau narasi pribadi.
                     </p>
-                    <p class="text-lg text-gray-700" style="text-align: justify;">
+                    <p class="text-base md:text-lg text-gray-700" style="text-align: justify;">
                         Dalam konseling naratif, masalah dianggap bukan sebagai bagian dari diri seseorang, melainkan
                         sebagai sesuatu yang "terpisah" dari dirinya. Dengan cara ini, siswa dapat melihat masalah
                         secara lebih objektif dan membangun cerita baru tentang diri mereka yang lebih positif dan
@@ -225,8 +224,9 @@
                     </p>
                 </div>
                 <!-- Gambar -->
-                <div class="md:col-span-5 flex justify-center md:justify-end order-first md:order-last">
-                    <img src="{{ asset('images/kids3.png') }}" class="animated-plane">
+                <div
+                    class="md:col-span-5 flex flex-col justify-center md:justify-end items-center md:items-end order-first md:order-last">
+                    <img src="{{ asset('images/kids3.png') }}" class="animated-plane max-w-full h-auto">
                 </div>
             </div>
         </div>
@@ -379,7 +379,8 @@
                     urna.</p>
                 <div class="flex justify-between items-center">
                     <span class="text-sm text-gray-500">May 8, 2025</span>
-                    <a href="#" class="text-primary font-medium hover:text-secondary transition-colors">Read more</a>
+                    <a href="#" class="text-primary font-medium hover:text-secondary transition-colors">Read
+                        more</a>
                 </div>
             </div>
         </div>
@@ -402,7 +403,8 @@
                     urna..</p>
                 <div class="flex justify-between items-center">
                     <span class="text-sm text-gray-500">May 5, 2025</span>
-                    <a href="#" class="text-primary font-medium hover:text-secondary transition-colors">Read more</a>
+                    <a href="#" class="text-primary font-medium hover:text-secondary transition-colors">Read
+                        more</a>
                 </div>
             </div>
             <!-- Video -->
@@ -443,7 +445,8 @@
                     urna.</p>
                 <div class="flex justify-between items-center">
                     <span class="text-sm text-gray-500">May 2, 2025</span>
-                    <a href="#" class="text-primary font-medium hover:text-secondary transition-colors">Read more</a>
+                    <a href="#" class="text-primary font-medium hover:text-secondary transition-colors">Read
+                        more</a>
                 </div>
             </div>
         </div>

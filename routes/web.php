@@ -11,6 +11,11 @@ Route::get('/lkpd', function () {
     return view('lkpd');
 })->name('lkpd');
 
+Route::get('/kebijakan-privasi', function () {
+    return view('kebijakan-privasi');
+})->name('kebijakan-privasi');
+
+
 // Auth
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/auth', [AuthController::class, 'auth'])->name('auth');
