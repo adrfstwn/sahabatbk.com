@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'SahabatBK - Kebijakan & Privasi')
+@section('title', 'SahabatBK.com - Kebijakan & Privasi')
 @section('content')
 
     <style>
