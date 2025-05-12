@@ -10,7 +10,7 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: rrgb(255, 254, 251) 254, 254);
+            background-color: rgb(255, 247, 247);
         }
 
         .card {
