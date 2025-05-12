@@ -15,7 +15,7 @@
                 class="nav-link text-white font-medium hover:text-accent transition-colors">
                 KONSELING NARATIF
             </a>
-            <a href="#" class="nav-link text-white font-medium hover:text-accent transition-colors">KEBIJAKAN &
+            <a href="kebijakan-privasi" class="nav-link text-white font-medium hover:text-accent transition-colors">KEBIJAKAN &
                 PRIVASI</a>
             <a href="{{ route('lkpd') }}"
                 class="nav-link text-white font-medium hover:text-accent transition-colors">LKPD</a>
