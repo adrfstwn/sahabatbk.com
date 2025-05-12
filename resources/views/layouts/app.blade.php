@@ -115,25 +115,127 @@
 
     @yield('scripts')
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Mobile menu toggle
-            const menuButton = document.querySelector('.ri-menu-line');
-            if (menuButton) {
-                menuButton.addEventListener('click', function () {
-                    // Mobile menu functionality would go here
-                    alert('Mobile menu clicked');
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuButton = document.getElementById('menuToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            if (menuButton && mobileMenu) {
+                menuButton.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                    mobileMenu.classList.toggle('flex');
+                    // Optional: Change icon
+                    const menuIcon = document.getElementById('menuIcon');
+                    if (menuIcon) {
+                        if (mobileMenu.classList.contains('hidden')) {
+                            menuIcon.classList.remove('ri-close-line');
+                            menuIcon.classList.add('ri-menu-line');
+                        } else {
+                            menuIcon.classList.remove('ri-menu-line');
+                            menuIcon.classList.add('ri-close-line');
+                        }
+                    }
                 });
             }
-            // Quick access buttons
+
             const quickAccessButtons = document.querySelectorAll('.quick-access-btn');
             quickAccessButtons.forEach(button => {
-                button.addEventListener('click', function () {
+                button.addEventListener('click', function() {
                     const subject = this.querySelector('h3').textContent;
-                    alert(`You selected: ${subject}`);
+                    alert(`You selected: ${subject}`); // Example action
                 });
             });
+
+            // Get the base URL without hash
+            const rootUrl = "{{ route('home') }}";
+            const baseUrl = rootUrl.startsWith(window.location.origin) ?
+                rootUrl :
+                window.location.origin + rootUrl;
+
+            const handleHashNavigation = () => {
+                const hash = window.location.hash;
+                if (hash) {
+                    const targetElement = document.querySelector(hash);
+                    if (targetElement) {
+                        const offsetTop = targetElement.offsetTop - 100;
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                } else {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                }
+            };
+
+            const preventDefaultNavigation = (e) => {
+                const href = e.currentTarget.getAttribute('href');
+                const currentPath = window.location.pathname;
+                const currentHash = window.location.hash;
+                const homeRoutes = [rootUrl, rootUrl + '#', '/', '/#'];
+
+                if (currentPath === '/' && homeRoutes.includes(href)) {
+                    e.preventDefault();
+
+                    if (href.includes('#') && href !== currentHash) {
+                        const newHash = href.split('#')[1];
+                        history.pushState(null, null, `/#${newHash}`);
+                        handleHashNavigation();
+                    } else if (!href.includes('#')) {
+                        history.pushState(null, null, baseUrl);
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                    }
+                    return;
+                }
+
+                if (currentPath !== '/' && homeRoutes.includes(href)) {
+                    e.preventDefault();
+
+                    if (href.includes('#')) {
+                        window.location.href = baseUrl + href.substring(href.indexOf('#'));
+                    } else {
+                        window.location.href = baseUrl;
+                    }
+                }
+            };
+
+            const homeLinks = document.querySelectorAll(`
+                a[href="${rootUrl}"], 
+                a[href="${rootUrl}#"], 
+                a[href="/"], 
+                a[href="/#"],
+                a[href^="/#"]
+            `);
+            homeLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    preventDefaultNavigation(e);
+                });
+            });
+
+            const hashLinks = document.querySelectorAll('a[href^="#"]');
+            hashLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetHash = this.getAttribute('href');
+
+                    history.pushState(null, null, baseUrl + targetHash);
+
+                    handleHashNavigation();
+                });
+            });
+
+            window.addEventListener('popstate', handleHashNavigation);
+
+            handleHashNavigation();
         });
     </script>
+
+
 </body>
 
 </html>
