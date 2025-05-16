@@ -16,7 +16,8 @@
             </a>
             <a href="kebijakan-privasi"
                 class="nav-link text-white font-medium hover:text-accent transition-colors">TENTANG</a>
-            class="nav-link text-white font-medium hover:text-accent transition-colors">CONTACT US</a>
+            <a href="kebijakan-privasi"
+                class="nav-link text-white font-medium hover:text-accent transition-colors">CONTACT US</a>
             <a href="{{ route('lkpd') }}"
                 class="nav-link text-white font-medium hover:text-accent transition-colors">LKPD</a>
             <a href="{{ route('login') }}" class="w-full md:w-auto flex justify-center">
