@@ -37,7 +37,7 @@
                                 <p class="text-gray-600 mb-4">Sebelum melanjutkan, silakan cek email Anda untuk link verifikasi.
                                 </p>
                                 @if (session('message'))
-                                    <div class="mb-4 text-green-600">{{ session('message') }}</div>
+                                    <div class="mb-4 text-sm font-medium {{ str_contains(session('message'), 'kedaluwarsa') ? 'text-red-600' : 'text-green-600' }}">{{ session('message') }}</div>
                                 @endif
                                 <form method="POST" action="{{ route('verification.send') }}">
                                     @csrf
