@@ -13,7 +13,7 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->trustProxies(
-            proxies: '*', // ← percaya semua proxy (nginx, docker)
+            at: '*',
             headers: \Illuminate\Http\Request::HEADER_X_FORWARDED_ALL
         );
     })
