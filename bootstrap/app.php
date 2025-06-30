@@ -12,7 +12,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        $middleware->trustProxies(
+            proxies: '*', // ← percaya semua proxy (nginx, docker)
+            headers: \Illuminate\Http\Request::HEADER_X_FORWARDED_ALL
+        );
     })
     ->withExceptions(function (Exceptions $exceptions) {
         $exceptions->renderable(function (InvalidSignatureException $e) {
