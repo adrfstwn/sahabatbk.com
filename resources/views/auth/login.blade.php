@@ -40,7 +40,7 @@
     </style>
 </head>
 
-<body class="bg-gradient-to-br from-accent to-secondary">
+<body class="bg-gray-100">
     <div class="min-h-screen flex flex-col">
         <!-- Main Content -->
         <div class="flex-grow flex items-center justify-center py-10 px-4">
@@ -100,8 +100,20 @@
                                 <!-- Submit Button -->
                                 <div class="mb-6">
                                     <button type="submit"
-                                        class="w-full bg-accent text-primary font-semibold py-3 !rounded-button hover:bg-opacity-90 transition-all shadow-md whitespace-nowrap">Sign
-                                        In</button>
+                                        class="w-full bg-accent text-primary font-semibold py-3 !rounded-button hover:bg-opacity-90 transition-all shadow-md whitespace-nowrap">
+                                        Login
+                                    </button>
+                                </div>
+                                <div class="mb-6">
+                                    <a href="{{ route('register') }}"
+                                        class="w-full inline-block text-center bg-primary text-white font-semibold py-3 !rounded-button hover:bg-opacity-90 transition-all shadow-md whitespace-nowrap">
+                                        Register
+                                    </a>
+                                </div>
+                                <div class="text-center">
+                                    <span class="text-gray-600 text-sm">Lupa Password ?</span>
+                                    <a href="{{ route('password.request') }}"
+                                    class="text-primary font-semibold hover:underline text-sm">Klik Disini</a>
                                 </div>
                             </form>
                         </div>
