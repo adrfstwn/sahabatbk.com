@@ -6,11 +6,11 @@ services:
     env_file:
       - /home/wawan/sahabatbk/.env.dev
     volumes:
-      - ../:/storage
+      - /srv/sahabatbk/dev-storage:/storage
     networks:
       - nginx-network
       - mysql-network
-    restart: always
+    restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/up"]
       interval: 30s
