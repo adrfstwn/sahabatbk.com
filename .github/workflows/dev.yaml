@@ -53,9 +53,9 @@ jobs:
           script: |
             cd /home/wawan/sahabatbk/tmp
 
-            docker compose -p dev -f infra/docker-compose-dev.yml down
+            docker compose -f infra/docker-compose-dev.yml down
             docker rmi -f adrfstwn/sahabatbk.com:dev
-            docker compose -p dev -f infra/docker-compose-dev.yml up -d
+            docker compose -f infra/docker-compose-dev.yml up -d
 
             sudo cp infra/sahabatbk-dev.conf /etc/nginx/conf/sahabatbk-dev.conf
 
