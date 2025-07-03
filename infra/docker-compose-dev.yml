@@ -2,11 +2,11 @@ services:
   app-dev:
     container_name: sahabatbk-dev
     image: adrfstwn/sahabatbk.com:dev
-    pull_policy: always
+    # pull_policy: always
     env_file:
       - /home/wawan/sahabatbk/.env.dev
     volumes:
-      - ../:/storage
+      - /srv/sahabatbk/dev-storage:/storage
     networks:
       - nginx-network
       - mysql-network
