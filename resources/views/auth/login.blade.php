@@ -12,6 +12,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-tailwind@5/tailwind.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         :where([class^="ri-"])::before {
             content: "\f3c2";
@@ -113,7 +115,7 @@
                                 <div class="text-center">
                                     <span class="text-gray-600 text-sm">Lupa Password ?</span>
                                     <a href="{{ route('password.request') }}"
-                                    class="text-primary font-semibold hover:underline text-sm">Klik Disini</a>
+                                        class="text-primary font-semibold hover:underline text-sm">Klik Disini</a>
                                 </div>
                             </form>
                         </div>
@@ -138,6 +140,37 @@
                     passwordToggle.classList.add('ri-eye-off-line');
                 }
             });
+
+            @if(session('error'))
+                // Show error message if exists
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Login Gagal',
+                    text: '{{ session('error') }}',
+                    confirmButtonColor: '#03AED2',
+                    customClass: {
+                        popup: 'rounded-xl'
+                    }
+                });
+            @endif
+
+            @if(session('success'))
+                // Show success message if exists
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil Login',
+                    text: '{{ session('success') }}',
+                    confirmButtonColor: '#03AED2',
+                    customClass: {
+                        popup: 'rounded-xl'
+                    },
+                    timer: 2000,
+                    showConfirmButton: false,
+                    willClose: () => {
+                        window.location.href = '{{ session('redirectUrl') }}';
+                    }
+                });
+            @endif
         });
     </script>
 </body>

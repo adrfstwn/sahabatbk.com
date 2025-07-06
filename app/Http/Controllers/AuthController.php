@@ -22,22 +22,39 @@ class AuthController extends Controller
     {
         $credentials = $request->validated();
 
-        if (!Auth::attempt($credentials)) {
-            return response()->json([
-                'message' => 'Invalid credentials',
-            ], 401);
+        // check if user already registered
+        if (!User::where('email', $credentials['email'])->exists()) {
+            return redirect()->back()->with(
+                'error',
+                'Email tidak terdaftar!'
+            );
         }
 
-        return redirect()->route('admin.dashboard');
+        if (!Auth::attempt($credentials)) {
+            return redirect()->back()->with(
+                'error',
+                'Email atau password salah!'
+            );
+        }
+
+        if (Auth::user()->hasRole('admin')) {
+            $redirectUrl = route('admin.dashboard');
+
+        } else if (Auth::user()->hasRole('student')) {
+            $redirectUrl = route('student.lkpd1');
+        }
+
+        return redirect()->route('login')->with([
+            'success' => 'Login berhasil! selamat datang, ' . Auth::user()->name,
+            'redirectUrl' => $redirectUrl
+        ]);
     }
 
     public function logout(Request $request)
     {
         Auth::logout();
 
-        return response()->json([
-            'message' => 'Logout successful',
-        ]);
+        return redirect()->route('home')->with('success', 'Logout successful');
     }
 
     public function showRegisterForm()
@@ -60,6 +77,8 @@ class AuthController extends Controller
             'password' => $validated['password'],
             'class' => $validated['class'],
         ]);
+
+        $user->assignRole('student'); // Assign default role
 
         event(new Registered($user));
 

@@ -7,8 +7,11 @@
     <title>@yield('title', 'SahabatBK.com')</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-tailwind@5/tailwind.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <style>
         body {
@@ -89,7 +92,7 @@
             .mobile-menu-btn {
                 display: block;
             }
-            
+
             .sidebar {
                 transform: translateX(-100%);
                 transition: transform 0.3s ease;
@@ -99,11 +102,11 @@
                 top: 0;
                 left: 0;
             }
-            
+
             .sidebar.show {
                 transform: translateX(0);
             }
-            
+
             .overlay {
                 display: none;
                 position: fixed;
@@ -114,7 +117,7 @@
                 background: rgba(0, 0, 0, 0.5);
                 z-index: 40;
             }
-            
+
             .overlay.show {
                 display: block;
             }
@@ -127,11 +130,11 @@
 <body class="bg-gray-50 text-gray-900">
     <!-- Mobile Menu Overlay -->
     <div id="overlay" class="overlay"></div>
-    
+
     <div class="min-h-screen flex flex-col">
         <!-- Header -->
         @include('layouts.admin.header')
-        
+
         <div class="flex flex-1">
             <!-- Sidebar -->
             @include('layouts.admin.sidebar')
@@ -142,27 +145,27 @@
             </main>
         </div>
     </div>
-    
+
     <script>
         // Mobile menu toggle
         function toggleMobileMenu() {
             const sidebar = document.querySelector('.sidebar');
             const overlay = document.getElementById('overlay');
-            
+
             sidebar.classList.toggle('show');
             overlay.classList.toggle('show');
         }
-        
+
         // Close menu when overlay is clicked
-        document.getElementById('overlay').addEventListener('click', function() {
+        document.getElementById('overlay').addEventListener('click', function () {
             const sidebar = document.querySelector('.sidebar');
             const overlay = document.getElementById('overlay');
-            
+
             sidebar.classList.remove('show');
             overlay.classList.remove('show');
         });
     </script>
-    
+
     @stack('scripts')
 </body>
 

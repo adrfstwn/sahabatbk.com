@@ -13,13 +13,18 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::updateOrCreate(
+        $admin = User::updateOrCreate(
             ['email' => env('DEFAULT_ADMIN_EMAIL')],
             [
                 'name' => env('DEFAULT_ADMIN_NAME'),
                 'email' => env('DEFAULT_ADMIN_EMAIL'),
                 'password' => Hash::make(env('DEFAULT_ADMIN_PASSWORD')),
+                'email_verified_at' => now(),
             ]
         );
+
+        if ($admin) {
+            $admin->assignRole('admin');
+        }
     }
 }
