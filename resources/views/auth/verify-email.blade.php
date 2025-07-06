@@ -9,7 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
     <style>
         body {
@@ -33,11 +34,16 @@
                         <!-- Right Side - Content -->
                         <div class="w-full md:w-7/12 p-8 md:p-10 flex flex-col justify-center">
                             <div class="text-center mb-8">
-                                <h1 class="text-3xl font-bold text-gray-800 mb-2">Verifikasi Email Anda</h1>
-                                <p class="text-gray-600 mb-4">Sebelum melanjutkan, silakan cek email Anda untuk link verifikasi.
+                                <h1 class="text-3xl font-bold text-gray-800 mb-2">Akun anda belum aktif!, Verifikasi
+                                    email anda terlebih dahulu</h1>
+                                <p class="text-gray-600 mb-4">Sebelum melanjutkan, silakan cek email Anda untuk link
+                                    verifikasi.
                                 </p>
                                 @if (session('message'))
-                                    <div class="mb-4 text-sm font-medium {{ str_contains(session('message'), 'kedaluwarsa') ? 'text-red-600' : 'text-green-600' }}">{{ session('message') }}</div>
+                                    <div
+                                        class="mb-4 text-sm font-medium {{ str_contains(session('message'), 'kedaluwarsa') ? 'text-red-600' : 'text-green-600' }}">
+                                        {{ session('message') }}
+                                    </div>
                                 @endif
                                 <form method="POST" action="{{ route('verification.send') }}">
                                     @csrf

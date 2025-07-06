@@ -12,8 +12,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-tailwind@5/tailwind.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         :where([class^="ri-"])::before {
             content: "\f3c2";
@@ -109,11 +107,11 @@
 </head>
 
 <body>
-    @include('layouts.header')
+    @include('layouts.student.header')
 
     @yield('content')
 
-    @include('layouts.footer')
+    @include('layouts.student.footer')
 
     @yield('scripts')
     <script>
@@ -234,20 +232,10 @@
             window.addEventListener('popstate', handleHashNavigation);
 
             handleHashNavigation();
-
-            @if(session('success'))
-                wal.fire({
-                    icon: 'success',
-                    title: '{{ session('success') }}',
-                    customClass: {
-                        popup: 'rounded-xl'
-                    },
-                    timer: 2000,
-                    showConfirmButton: false
-                });
-            @endif
         });
     </script>
+
+
 </body>
 
 </html>

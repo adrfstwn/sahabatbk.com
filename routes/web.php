@@ -46,11 +46,21 @@ Route::get('/reset-password/{token}', [AuthController::class, 'showResetForm'])-
 Route::post('/reset-password', [AuthController::class, 'resetPassword'])->name('password.update');
 
 // Halaman Admin
-Route::prefix('admin')->middleware('auth', 'verified')->group(function () {
+Route::prefix('admin')->middleware('auth')->group(function () {
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
     Route::get('/', function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
+});
+
+// Halaman Siswa
+Route::prefix('student')->middleware('auth')->group(function () {
+
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    Route::get('/lkpd1', function () {
+        return view('student.lkpd1');
+    })->name('student.lkpd1');
 });
